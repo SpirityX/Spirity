@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur Aléatoire</title>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js")
+                .then(() => console.log("Service Worker enregistré !"))
+                .catch(err => console.log("Erreur Service Worker:", err));
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            color: #2c3e50;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            text-align: left;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            margin-top: 32px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .error {
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        #randomImage {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Générateur Aléatoire</h1>
+
+        <label for="min">Minimum:</label>
+        <input type="number" id="min" placeholder="Minimum" value="1">
+
+        <label for="max">Maximum:</label>
+        <input type="number" id="max" placeholder="Maximum" value="100">
+
+        <button onclick="generateRandom()">Générer</button>
+
+        <div id="result"></div>
+        <div id="error" class="error"></div>
+        <img id="randomImage" src="" alt="Image aléatoire">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
